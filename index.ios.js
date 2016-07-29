@@ -16,22 +16,26 @@ import Alipay from 'rn-alipay';
 
 class AlipayDemo extends Component {
     goAlipay () {
-        const privateKey = 'MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAN0yqPkLXlnhM+2H/57aHsYHaHXazr9pFQun907TMvmbR04wHChVsKVgGUF1hC0FN9hfeYT5v2SXg1WJSg2tSgk7F29SpsF0I36oSLCIszxdu7ClO7c22mxEVuCjmYpJdqb6XweAZzv4Is661jXP4PdrCTHRdVTU5zR9xUByiLSVAgMBAAECgYEAhznORRonHylm9oKaygEsqQGkYdBXbnsOS6busLi6xA+iovEUdbAVIrTCG9t854z2HAgaISoRUKyztJoOtJfI1wJaQU+XL+U3JIh4jmNx/k5UzJijfvfpT7Cv3ueMtqyAGBJrkLvXjiS7O5ylaCGuB0Qz711bWGkRrVoosPM3N6ECQQD8hVQUgnHEVHZYtvFqfcoq2g/onPbSqyjdrRu35a7PvgDAZx69Mr/XggGNTgT3jJn7+2XmiGkHM1fd1Ob/3uAdAkEA4D7aE3ZgXG/PQqlm3VbE/+4MvNl8xhjqOkByBOY2ZFfWKhlRziLEPSSAh16xEJ79WgY9iti+guLRAMravGrs2QJBAOmKWYeaWKNNxiIoF7/4VDgrcpkcSf3uRB44UjFSn8kLnWBUPo6WV+x1FQBdjqRviZ4NFGIP+KqrJnFHzNgJhVUCQFzCAukMDV4PLfeQJSmna8PFz2UKva8fvTutTryyEYu+PauaX5laDjyQbc4RIEMU0Q29CRX3BA8WDYg7YPGRdTkCQQCG+pjU2FB17ZLuKRlKEdtXNV6zQFTmFc1TKhlsDTtCkWs/xwkoCfZKstuV3Uc5J4BNJDkQOGm38pDRPcUDUh2/';
+        const privateKey = 'MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBAN0fUY6FILuklvzsxpsw/b/oPlgMIH/OzKYwqYjq2gtIUh1DiX0JCC1uWkKyfgUHur/idHk+NCCh6o9wr5M3O10LKO5xB3m7YOtedNoxhU5hcx5xpFObMWp4g+RDZL8fI+Ih2v0bJq1yDKZ+PEkF6lTo7AWezIjm9WU/QTjd5MAnAgMBAAECgYEAkV2hdBw45KLTT/sopaWTa7H2KlPumZcOGsMq8QPTzE8DDJH1tOlXIubFF8vX5N6r+rGY+IvYIQvQ8/OUuSc6Mjsp8gRvfwlQqN30ruBqFxF+yhvtQ/vznGLESQbG0Hab8tR7Gmwy2cmfRPbAs56yiY1jnAdm64MdtGIEYs99LEECQQD/GUse+a0JXg6FB2RNs+e9iJkFQd3UgwbCpq4l1ZEVuX3yY/QmDvkWuVlF17iSHc8DNvKPIz78oWi+lnq0+s2PAkEA3edMJp8kIZn8xv+gNp5Hsou9GDQpVR9UrNornaS3vMNMDw7wk3jIdhTTQdGSYY5w1vbtA+cRJXpr4P3+2xNH6QJAYjbKxVI7XK/pxy3hYEkzn7VHtM53KaqIn8iso8Rl54dTBk+VYFHDdQxHYqx7U0ZGvWYaXSGkzn8WZMpq0+L74QJBAL1bpDMM+HMoCXnzJ0+Ub9BfyIQ/9slpzAMYxcFnj1coPN5YvFjL6BxDlycCZGyVdZsq6YS8CHi36Bj+Bh4CbQkCQQDZg5GKtz/v/tavnS5cUyTW/FLJc5dHRf7tsqr7/9ZSivv7rSg4TghzeGalXkZXVsaeO+pxzcdWUEQc9DBn385F';
         const data = {
             privateKey,
-            partner: '2088302277569230',
-            seller: '12312341234',
-            outTradeNO: '1231231231231', //订单ID（由商家自行制定）
+            partner: '2088121766951093',
+            seller: 'dev@huiseoul.com',
+            outTradeNO: '1231231231236', //订单ID（由商家自行制定）
             subject: '测试商品标题', //商品标题
             body: '测试产品描述', //商品描述
-            totalFee: '1', //商品价格
-            notifyURL: 'http://www.baidu.com"', //回调URL
+            totalFee: '0.01', //商品价格
+            notifyURL: 'http://www.huiseoul.com', //回调URL
             service: 'mobile.securitypay.pay',
             paymentType: '1',
             inputCharset: 'utf-8',
             itBPay: '30m',
             showURL: 'm.alipay.com',
-            appSchemeIOS: 'testapp20', //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
+            appSchemeIOS: 'testapp20',
+            outContext: {
+              currency: 'USD',
+              forex_biz: 'FP'
+            }
         };
         Alipay.pay(data).then((msg) => {
             console.log(msg);
